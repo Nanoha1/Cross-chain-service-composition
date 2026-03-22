@@ -1,0 +1,28 @@
+=============== Dec 30, 2025 (UTC) ===============
+08:22:54.628024 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+08:22:54.681584 db@open opening
+08:22:54.690614 version@stat F·[] S·0B[] Sc·[]
+08:22:54.703727 db@janitor F·2 G·0
+08:22:54.704168 db@open done T·22.236875ms
+08:22:54.706515 db@close closing
+08:22:54.708244 db@close done T·1.722462ms
+=============== Dec 30, 2025 (UTC) ===============
+08:25:05.792907 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+08:25:05.808136 version@stat F·[] S·0B[] Sc·[]
+08:25:05.809245 db@open opening
+08:25:05.812913 journal@recovery F·1
+08:25:05.869227 journal@recovery recovering @1
+08:25:05.903653 memdb@flush created L0@2 N·3 S·386B "Mpointer,v3":"UTe..3_0,v1"
+08:25:05.911101 version@stat F·[1] S·386B[386B] Sc·[0.25]
+08:25:05.976416 db@janitor F·3 G·0
+08:25:05.976778 db@open done T·167.271093ms
+=============== Dec 30, 2025 (UTC) ===============
+10:50:46.896921 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+10:50:46.919183 version@stat F·[1] S·386B[386B] Sc·[0.25]
+10:50:46.929433 db@open opening
+10:50:46.949320 journal@recovery F·1
+10:50:47.099611 journal@recovery recovering @3
+10:50:47.202670 memdb@flush created L0@5 N·3757 S·132KiB "FT,v3761":"UTe..c_0,v1302"
+10:50:47.211999 version@stat F·[2] S·133KiB[133KiB] Sc·[0.50]
+10:50:47.344655 db@janitor F·4 G·0
+10:50:47.345079 db@open done T·414.600657ms

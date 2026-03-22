@@ -1,0 +1,8 @@
+t=2026-01-04T17:57:04+0800 lvl=warn msg="stream not valid, create new stream" module=xchain log_id=1767520621_6059205562205444 s_mod=miner call=stream_pool.go:59 pid=26 peerId=Qmf2HeHe4sspGkfRCTq6257Vm3UHzvh2TeQJHHvHzzuFw6
+t=2026-01-04T17:57:23+0800 lvl=eror msg="Mempool Debug" module=xchain log_id=1767520643_3885581358529073 s_mod=state call=mempool.go:63 pid=27 confirmedLen=0 unconfirmedLen=0 orphanLen=0 bucketKeyNodesLen=0
+t=2026-01-04T17:57:34+0800 lvl=warn msg="new net stream error" module=xchain log_id=1767520642_6167080086449165 s_mod=xuper call=stream_pool.go:83 pid=27 peerId=QmZXjZibcL5hy2Ttv5CnAQnssvnCbPEGBzqk7sAnL69R1E error="protocol not supported"
+t=2026-01-04T17:57:34+0800 lvl=warn msg="p2p: get stream error" module=xchain log_id=1767520654_1707002895758673 s_mod=network call=client.go:179 pid=27 msgType=GET_BLOCK_HEADERS error="new stream error"
+t=2026-01-08T15:15:04+0800 lvl=eror msg="Mempool Debug" module=xchain log_id=1767856503_4266575146057011 s_mod=state call=mempool.go:63 pid=26 confirmedLen=0 unconfirmedLen=0 orphanLen=0 bucketKeyNodesLen=0
+t=2026-01-20T16:58:11+0800 lvl=eror msg="Mempool Debug" module=xchain log_id=1768899490_3990918619525091 s_mod=state call=mempool.go:63 pid=27 confirmedLen=0 unconfirmedLen=0 orphanLen=0 bucketKeyNodesLen=0
+t=2026-01-20T16:58:21+0800 lvl=warn msg="new net stream error" module=xchain log_id=1768899489_7936600009355169 s_mod=xuper call=stream_pool.go:83 pid=27 peerId=QmZXjZibcL5hy2Ttv5CnAQnssvnCbPEGBzqk7sAnL69R1E error="protocol not supported"
+t=2026-01-20T16:58:21+0800 lvl=warn msg="p2p: get stream error" module=xchain log_id=1768899501_2696560008993524 s_mod=network call=client.go:179 pid=27 msgType=GET_BLOCK_HEADERS error="new stream error"

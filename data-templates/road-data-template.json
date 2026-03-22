@@ -1,0 +1,21 @@
+{
+  "templateData": {
+    "id": "ROAD20251231001",
+    "roadData": {
+      "roadName": "Highway1",
+      "section": "50km-150km",
+      "condition": "Fluid",
+      "averageSpeed": 80,
+      "latitude": 39.9042,
+      "longitude": 116.4074,
+      "address": "Highway1, Section 50km-150km, Beijing"
+    },
+    "qos": {
+      "delay": 32,
+      "availability": 99,
+      "timestamp": "2025-12-31 22:00:00"
+    }
+  }
+}
+
+

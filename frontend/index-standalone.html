@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XuperChain 多链监控面板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+            100% { transform: scale(0.8); opacity: 1; }
+        }
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- 头部 -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-white mb-4">
+                <i class="fas fa-link text-blue-400"></i> XuperChain 多链监控
+            </h1>
+            <p class="text-gray-300 text-lg">实时监控主链和副链运行状态</p>
+            <button onclick="refreshAll()" class="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition duration-200 shadow-lg">
+                <i class="fas fa-sync-alt mr-2"></i>刷新所有链
+            </button>
+        </div>
+
+        <!-- 主链卡片 -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                <i class="fas fa-crown text-yellow-400 mr-2"></i>主链 (Main Chain)
+            </h2>
+            <div id="mainchain-card" class="bg-white rounded-xl shadow-2xl p-6 card-hover">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-green-500 rounded-full pulse-ring mr-3"></div>
+                        <span class="text-xl font-bold text-gray-800">xuper</span>
+                    </div>
+                    <span id="mainchain-status" class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-semibold">运行中</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <div class="text-gray-600 text-sm mb-1">RPC端口</div>
+                        <div class="text-2xl font-bold text-blue-600">37101</div>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-4">
+                        <div class="text-gray-600 text-sm mb-1">区块高度</div>
+                        <div id="mainchain-height" class="text-2xl font-bold text-purple-600">加载中...</div>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4">
+                        <div class="text-gray-600 text-sm mb-1">P2P端口</div>
+                        <div class="text-2xl font-bold text-green-600">47101</div>
+                    </div>
+                </div>
+                <div class="mt-4 text-sm text-gray-500">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    <span id="mainchain-tip">正在查询链状态...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 副链卡片 -->
+        <div>
+            <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                <i class="fas fa-network-wired text-blue-400 mr-2"></i>副链 (Sub Chains)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 副链1 -->
+                <div id="subchain1-card" class="bg-white rounded-xl shadow-2xl p-6 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full pulse-ring mr-3"></div>
+                            <span class="text-lg font-bold text-gray-800">SubChain 1</span>
+                        </div>
+                        <span id="subchain1-status" class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-semibold">检查中</span>
+                    </div>
+                    <div class="space-y-3 mt-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">RPC端口</span>
+                            <span class="font-bold text-blue-600">37102</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">区块高度</span>
+                            <span id="subchain1-height" class="font-bold text-purple-600">加载中...</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">P2P端口</span>
+                            <span class="font-bold text-green-600">47102</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-400">
+                        <span id="subchain1-tip">正在查询...</span>
+                    </div>
+                </div>
+
+                <!-- 副链2 -->
+                <div id="subchain2-card" class="bg-white rounded-xl shadow-2xl p-6 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-indigo-500 rounded-full pulse-ring mr-3"></div>
+                            <span class="text-lg font-bold text-gray-800">SubChain 2</span>
+                        </div>
+                        <span id="subchain2-status" class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-semibold">检查中</span>
+                    </div>
+                    <div class="space-y-3 mt-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">RPC端口</span>
+                            <span class="font-bold text-blue-600">37103</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">区块高度</span>
+                            <span id="subchain2-height" class="font-bold text-purple-600">加载中...</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">P2P端口</span>
+                            <span class="font-bold text-green-600">47103</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-400">
+                        <span id="subchain2-tip">正在查询...</span>
+                    </div>
+                </div>
+
+                <!-- 副链3 -->
+                <div id="subchain3-card" class="bg-white rounded-xl shadow-2xl p-6 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-pink-500 rounded-full pulse-ring mr-3"></div>
+                            <span class="text-lg font-bold text-gray-800">SubChain 3</span>
+                        </div>
+                        <span id="subchain3-status" class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-semibold">检查中</span>
+                    </div>
+                    <div class="space-y-3 mt-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">RPC端口</span>
+                            <span class="font-bold text-blue-600">37104</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">区块高度</span>
+                            <span id="subchain3-height" class="font-bold text-purple-600">加载中...</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">P2P端口</span>
+                            <span class="font-bold text-green-600">47104</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-400">
+                        <span id="subchain3-tip">正在查询...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部信息 -->
+        <div class="mt-8 text-center text-gray-400 text-sm">
+            <p>最后更新: <span id="last-update">-</span></p>
+            <p class="mt-2 text-xs">提示: 请确保后端服务器运行在 http://localhost:3000</p>
+        </div>
+    </div>
+
+    <script>
+        // 链配置
+        const chains = {
+            mainchain: { container: 'xuperchain-main', rpcPort: 37101 },
+            subchain1: { container: 'xuperchain-sub1', rpcPort: 37102 },
+            subchain2: { container: 'xuperchain-sub2', rpcPort: 37103 },
+            subchain3: { container: 'xuperchain-sub3', rpcPort: 37104 }
+        };
+
+        const API_BASE = 'http://localhost:3000/api';
+
+        async function queryChainStatus(chainKey) {
+            const chain = chains[chainKey];
+            try {
+                const response = await fetch(`${API_BASE}/status/${chain.container}?port=${chain.rpcPort}`);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return await response.json();
+            } catch (error) {
+                console.error(`查询失败:`, error);
+                return null;
+            }
+        }
+
+        async function updateMainChain() {
+            const data = await queryChainStatus('mainchain');
+            const statusEl = document.getElementById('mainchain-status');
+            const heightEl = document.getElementById('mainchain-height');
+            const tipEl = document.getElementById('mainchain-tip');
+
+            if (data && data.blockchains && data.blockchains.length > 0) {
+                const chain = data.blockchains[0];
+                const height = chain.ledger.trunkHeight || 0;
+                const tipBlockid = chain.ledger.tipBlockid || '';
+                
+                statusEl.textContent = '运行中';
+                statusEl.className = 'px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-semibold';
+                heightEl.textContent = height;
+                tipEl.textContent = `最新区块: ${tipBlockid.substring(0, 16)}...`;
+            } else {
+                statusEl.textContent = '离线';
+                statusEl.className = 'px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-semibold';
+                heightEl.textContent = '-';
+                tipEl.textContent = '无法连接到链或后端服务未启动';
+            }
+        }
+
+        async function updateSubChain(chainKey, index) {
+            const data = await queryChainStatus(chainKey);
+            const statusEl = document.getElementById(`subchain${index}-status`);
+            const heightEl = document.getElementById(`subchain${index}-height`);
+            const tipEl = document.getElementById(`subchain${index}-tip`);
+
+            if (data && data.blockchains && data.blockchains.length > 0) {
+                const chain = data.blockchains[0];
+                const height = chain.ledger.trunkHeight || 0;
+                const tipBlockid = chain.ledger.tipBlockid || '';
+                
+                statusEl.textContent = '运行中';
+                statusEl.className = 'px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold';
+                heightEl.textContent = height;
+                tipEl.textContent = `区块: ${tipBlockid.substring(0, 12)}...`;
+            } else {
+                statusEl.textContent = '离线';
+                statusEl.className = 'px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-semibold';
+                heightEl.textContent = '-';
+                tipEl.textContent = '无法连接';
+            }
+        }
+
+        async function refreshAll() {
+            document.getElementById('last-update').textContent = new Date().toLocaleTimeString('zh-CN');
+            await Promise.all([
+                updateMainChain(),
+                updateSubChain('subchain1', 1),
+                updateSubChain('subchain2', 2),
+                updateSubChain('subchain3', 3)
+            ]);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('页面加载完成');
+            refreshAll();
+            setInterval(refreshAll, 10000);
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,174 @@
+=============== Dec 31, 2025 (CST) ===============
+13:20:12.819442 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:20:12.848159 db@open opening
+13:20:12.852982 version@stat F·[] S·0B[] Sc·[]
+13:20:12.863293 db@janitor F·2 G·0
+13:20:12.864437 db@open done T·15.977679ms
+13:20:12.866431 db@close closing
+13:20:12.867920 db@close done T·1.48289ms
+=============== Dec 31, 2025 (CST) ===============
+13:22:30.565222 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:22:30.630125 version@stat F·[] S·0B[] Sc·[]
+13:22:30.644114 db@open opening
+13:22:30.649823 journal@recovery F·1
+13:22:30.745869 journal@recovery recovering @1
+13:22:30.777456 memdb@flush created L0@2 N·3 S·386B "Mpointer,v3":"UTe..1_0,v1"
+13:22:30.781469 version@stat F·[1] S·386B[386B] Sc·[0.25]
+13:22:30.984710 db@janitor F·3 G·0
+13:22:30.985543 db@open done T·338.647596ms
+16:52:59.758032 memdb@flush N·16814 S·24MiB
+16:53:05.591359 memdb@flush created L0@6 N·16814 S·15MiB "FT,v16818":"ZUg..122,v14302"
+16:53:05.591776 version@stat F·[2] S·15MiB[15MiB] Sc·[0.50]
+16:53:05.753690 memdb@flush committed F·1 T·5.994796262s
+16:53:05.842169 journal@remove removed @3
+=============== Jan 1, 2026 (CST) ===============
+00:43:55.934614 memdb@flush N·26053 S·25MiB
+00:43:57.162170 memdb@flush created L0@8 N·26053 S·16MiB "FT,v42871":"ZUg..600,v37035"
+00:43:57.162955 version@stat F·[3] S·32MiB[32MiB] Sc·[0.75]
+00:43:57.171970 memdb@flush committed F·1 T·1.233948719s
+00:43:57.182926 journal@remove removed @5
+14:42:00.956471 table@compaction L0·3 -> L1·0 S·32MiB Q·66202
+14:42:01.651288 table@build created L1@9 N·10656 S·834KiB "FT,v42871":"ZUg..122,v14302"
+14:42:01.653577 version@stat F·[0 1] S·834KiB[0B 834KiB] Sc·[0.00 0.01]
+14:42:01.663258 table@compaction committed F-2 S-31MiB Ke·0 D·32214 T·704.382004ms
+14:42:01.677754 table@remove removed @8
+14:42:01.684262 table@remove removed @6
+=============== Jan 2, 2026 (CST) ===============
+18:48:28.365344 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:48:28.423814 version@stat F·[0 1] S·834KiB[0B 834KiB] Sc·[0.00 0.01]
+18:48:28.427131 db@open opening
+18:48:28.441316 journal@recovery F·1
+18:48:28.446478 journal@recovery recovering @7
+18:48:36.996411 memdb@flush created L0@10 N·115539 S·19MiB "FT,v158410":"ZUj..tor,v42876"
+18:48:36.999758 version@stat F·[1 1] S·20MiB[19MiB 834KiB] Sc·[0.25 0.01]
+18:48:37.289899 db@janitor F·5 G·1
+18:48:37.290229 db@janitor removing table-2
+18:48:37.291984 db@open done T·8.863798234s
+=============== Jan 3, 2026 (CST) ===============
+12:47:47.032003 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+12:47:47.040144 version@stat F·[1 1] S·20MiB[19MiB 834KiB] Sc·[0.25 0.01]
+12:47:47.040782 db@open opening
+12:47:47.042301 journal@recovery F·1
+12:47:47.043617 journal@recovery recovering @11
+12:47:47.054372 memdb@flush created L0@13 N·77 S·3KiB "FT,v158488":"UTe..4_0,v158421"
+12:47:47.082040 version@stat F·[2 1] S·20MiB[19MiB 834KiB] Sc·[0.50 0.01]
+12:47:47.117954 db@janitor F·5 G·0
+12:47:47.118184 db@open done T·77.192416ms
+=============== Jan 3, 2026 (CST) ===============
+12:54:28.253422 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+12:54:28.498025 version@stat F·[2 1] S·20MiB[19MiB 834KiB] Sc·[0.50 0.01]
+12:54:28.503679 db@open opening
+12:54:28.524547 journal@recovery F·1
+12:54:28.526510 journal@recovery recovering @14
+12:54:28.612149 memdb@flush created L0@16 N·497 S·17KiB "FT,v158986":"UTe..d_0,v158687"
+12:54:28.770402 version@stat F·[3 1] S·20MiB[19MiB 834KiB] Sc·[0.75 0.01]
+12:54:28.988161 db@janitor F·6 G·0
+12:54:28.988649 db@open done T·473.565161ms
+=============== Jan 3, 2026 (CST) ===============
+13:01:31.583320 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:01:31.720543 version@stat F·[3 1] S·20MiB[19MiB 834KiB] Sc·[0.75 0.01]
+13:01:31.744868 db@open opening
+13:01:31.761383 journal@recovery F·1
+13:01:31.770599 journal@recovery recovering @17
+13:01:31.867501 memdb@flush created L0@19 N·521 S·18KiB "FT,v159508":"UTe..1_0,v159305"
+13:01:31.952097 version@stat F·[4 1] S·20MiB[19MiB 834KiB] Sc·[1.00 0.01]
+13:01:32.107804 db@janitor F·7 G·0
+13:01:32.108176 db@open done T·356.556744ms
+13:01:32.108704 table@compaction L0·4 -> L1·1 S·20MiB Q·159509
+13:01:35.552956 table@build created L1@22 N·27417 S·2MiB "FT,v159508":"UTe..f_0,v58419"
+13:01:36.483332 table@build created L1@23 N·12414 S·960KiB "UTe..1_0,v25257":"ZUj..tor,v42876"
+13:01:36.483990 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+13:01:36.492778 table@compaction committed F-3 S-17MiB Ke·0 D·87459 T·4.371321593s
+13:01:36.500812 table@remove removed @16
+13:01:36.504607 table@remove removed @13
+13:01:36.516530 table@remove removed @10
+13:01:36.522558 table@remove removed @9
+=============== Jan 3, 2026 (CST) ===============
+13:47:02.683745 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:47:02.705956 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+13:47:02.707408 db@open opening
+13:47:02.720288 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+13:47:02.794843 db@janitor F·5 G·1
+13:47:02.795508 db@janitor removing table-19
+13:47:02.800513 db@open done T·92.186063ms
+=============== Jan 3, 2026 (CST) ===============
+13:59:13.304342 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:59:13.406029 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+13:59:13.409248 db@open opening
+13:59:13.423705 journal@recovery F·1
+13:59:13.439021 journal@recovery recovering @24
+13:59:13.562855 memdb@flush created L0@26 N·1122 S·58KiB "FT,v160631":"ZUj..030,v160046"
+13:59:13.654721 version@stat F·[1 2] S·3MiB[58KiB 3MiB] Sc·[0.25 0.03]
+13:59:13.835320 db@janitor F·5 G·0
+13:59:13.836894 db@open done T·427.135722ms
+=============== Jan 3, 2026 (CST) ===============
+14:01:31.493342 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:01:31.530155 version@stat F·[1 2] S·3MiB[58KiB 3MiB] Sc·[0.25 0.03]
+14:01:31.533194 db@open opening
+14:01:31.540390 journal@recovery F·1
+14:01:31.543975 journal@recovery recovering @27
+14:01:31.577975 memdb@flush created L0@29 N·145 S·5KiB "FT,v160777":"UTe..b_0,v160694"
+14:01:31.599630 version@stat F·[2 2] S·3MiB[64KiB 3MiB] Sc·[0.50 0.03]
+14:01:31.724286 db@janitor F·6 G·0
+14:01:31.725469 db@open done T·191.211461ms
+=============== Jan 3, 2026 (CST) ===============
+14:05:00.565473 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:05:00.646020 version@stat F·[2 2] S·3MiB[64KiB 3MiB] Sc·[0.50 0.03]
+14:05:00.651669 db@open opening
+14:05:00.681847 journal@recovery F·1
+14:05:00.690053 journal@recovery recovering @30
+14:05:00.799017 memdb@flush created L0@32 N·249 S·9KiB "FT,v161027":"UTe..0_0,v160868"
+14:05:00.922802 version@stat F·[3 2] S·3MiB[73KiB 3MiB] Sc·[0.75 0.03]
+14:05:01.231187 db@janitor F·7 G·0
+14:05:01.232077 db@open done T·579.192268ms
+=============== Jan 4, 2026 (CST) ===============
+16:34:20.883120 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:34:20.912399 version@stat F·[3 2] S·3MiB[73KiB 3MiB] Sc·[0.75 0.03]
+16:34:20.914047 db@open opening
+16:34:20.918969 journal@recovery F·1
+16:34:20.922065 journal@recovery recovering @33
+16:34:20.977469 memdb@flush created L0@35 N·1653 S·58KiB "FT,v162681":"UTe..d_0,v161338"
+16:34:21.024824 version@stat F·[4 2] S·3MiB[131KiB 3MiB] Sc·[1.00 0.03]
+16:34:21.129845 db@janitor F·8 G·0
+16:34:21.131252 db@open done T·216.47085ms
+16:34:21.131443 table@compaction L0·4 -> L1·2 S·3MiB Q·162682
+16:34:22.968860 table@build created L1@38 N·27419 S·2MiB "FT,v162681":"UTe..2_0,v100551"
+16:34:23.550869 table@build created L1@39 N·13216 S·1021KiB "UTe..6_0,v86299":"ZUj..tor,v42876"
+16:34:23.551552 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+16:34:23.558888 table@compaction committed F-4 S-70KiB Ke·0 D·2365 T·2.420510071s
+16:34:23.568433 table@remove removed @32
+16:34:23.579068 table@remove removed @29
+16:34:23.589775 table@remove removed @26
+16:34:23.601835 table@remove removed @22
+16:34:23.612685 table@remove removed @23
+=============== Jan 4, 2026 (CST) ===============
+17:57:23.601986 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+17:57:23.669574 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+17:57:23.673713 db@open opening
+17:57:23.682370 journal@recovery F·1
+17:57:23.686121 journal@recovery recovering @36
+17:57:24.017422 memdb@flush created L0@40 N·6593 S·232KiB "FT,v169275":"UTe..2_0,v164328"
+17:57:24.032805 version@stat F·[1 2] S·3MiB[232KiB 3MiB] Sc·[0.25 0.03]
+17:57:24.184373 db@janitor F·6 G·1
+17:57:24.185926 db@janitor removing table-35
+17:57:24.196596 db@open done T·521.915782ms
+=============== Jan 8, 2026 (CST) ===============
+15:15:03.702455 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:15:03.781236 version@stat F·[1 2] S·3MiB[232KiB 3MiB] Sc·[0.25 0.03]
+15:15:03.783316 db@open opening
+15:15:03.789794 journal@recovery F·1
+15:15:03.796128 journal@recovery recovering @41
+15:15:03.870090 memdb@flush created L0@43 N·925 S·33KiB "FT,v170201":"UTe..2_0,v169762"
+15:15:03.942069 version@stat F·[2 2] S·3MiB[265KiB 3MiB] Sc·[0.50 0.03]
+15:15:04.104716 db@janitor F·6 G·0
+15:15:04.105772 db@open done T·321.901942ms
+=============== Jan 20, 2026 (CST) ===============
+16:58:10.775774 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:58:10.818721 version@stat F·[2 2] S·3MiB[265KiB 3MiB] Sc·[0.50 0.03]
+16:58:10.821072 db@open opening
+16:58:10.832344 journal@recovery F·1
+16:58:10.837491 journal@recovery recovering @44
+16:58:11.282713 memdb@flush created L0@46 N·6629 S·253KiB "FT,v176831":"ZUj..030,v170540"
+16:58:11.294550 version@stat F·[3 2] S·3MiB[519KiB 3MiB] Sc·[0.75 0.03]
+16:58:11.436786 db@janitor F·7 G·0
+16:58:11.439043 db@open done T·616.93772ms

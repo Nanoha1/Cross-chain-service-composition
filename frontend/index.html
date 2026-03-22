@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-chain IoT Service - Trusted Chain Multi-Chain Monitor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+            100% { transform: scale(0.8); opacity: 1; }
+        }
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 min-h-screen">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-gray-800 text-white shadow-2xl z-50">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <i class="fas fa-link text-blue-400 mr-2"></i>
+                Trusted Chain
+            </h2>
+            <nav class="space-y-2">
+                <a href="index.html" class="flex items-center px-4 py-3 rounded-lg bg-blue-600 text-white">
+                    <i class="fas fa-home mr-3 w-5"></i>
+                    <span class="text-sm">Cross-chain IoT Service</span>
+                </a>
+                <a href="nodes.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-server mr-3 w-5"></i>
+                    <span class="text-sm">Node Management</span>
+                </a>
+                <a href="users.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-users mr-3 w-5"></i>
+                    <span class="text-sm">User Management</span>
+                </a>
+                <a href="data.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-database mr-3 w-5"></i>
+                    <span class="text-sm">Query Service</span>
+                </a>
+                <a href="data-all.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-list-alt mr-3 w-5"></i>
+                    <span class="text-sm">Composite Services</span>
+                </a>
+                <a href="transactions.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-history mr-3 w-5"></i>
+                    <span class="text-sm">Transaction History</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="ml-64 p-8">
+        <div class="container mx-auto">
+            <!-- 头部 -->
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold text-white mb-2">
+                        <i class="fas fa-link text-blue-400"></i> Cross-chain IoT Service
+                    </h1>
+                    <p class="text-gray-300">Real-time monitoring of main chain and sub chains</p>
+                </div>
+                <button onclick="refreshAll()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition duration-200 shadow-lg">
+                    <i class="fas fa-sync-alt mr-2"></i>Refresh All Chains
+                </button>
+            </div>
+
+        <!-- 主链卡片 -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                <i class="fas fa-crown text-yellow-400 mr-2"></i>Main Chain
+            </h2>
+            <div id="mainchain-card" class="bg-white rounded-xl shadow-2xl p-6 card-hover">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-green-500 rounded-full pulse-ring mr-3"></div>
+                        <span id="mainchain-name" class="text-xl font-bold text-gray-800">Registration chain</span>
+                    </div>
+                        <span id="mainchain-status" class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-semibold">Running</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <div class="text-gray-600 text-sm mb-1">RPC Port</div>
+                        <div class="text-2xl font-bold text-blue-600">37101</div>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-4">
+                        <div class="text-gray-600 text-sm mb-1">Block Height</div>
+                        <div id="mainchain-height" class="text-2xl font-bold text-purple-600">-</div>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4">
+                        <div class="text-gray-600 text-sm mb-1">P2P Port</div>
+                        <div class="text-2xl font-bold text-green-600">47101</div>
+                    </div>
+                </div>
+                <div class="mt-4 text-sm text-gray-500">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    <span id="mainchain-tip">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 副链卡片 -->
+        <div>
+            <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                <i class="fas fa-network-wired text-blue-400 mr-2"></i>Sub Chains
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 副链1 -->
+                <div id="subchain1-card" class="bg-white rounded-xl shadow-2xl p-6 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full pulse-ring mr-3"></div>
+                            <span class="text-lg font-bold text-gray-800">Monitoring chain 1</span>
+                            <span id="subchain1-name" class="ml-2 text-sm text-gray-500">(subchain1)</span>
+                        </div>
+                        <span id="subchain1-status" class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-semibold">Checking</span>
+                    </div>
+                    <div class="space-y-3 mt-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">RPC Port</span>
+                            <span class="font-bold text-blue-600">37102</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">Block Height</span>
+                            <span id="subchain1-height" class="font-bold text-purple-600">-</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">P2P Port</span>
+                            <span class="font-bold text-green-600">47102</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-400">
+                        <span id="subchain1-tip">Loading...</span>
+                    </div>
+                </div>
+
+                <!-- 副链2 -->
+                <div id="subchain2-card" class="bg-white rounded-xl shadow-2xl p-6 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-indigo-500 rounded-full pulse-ring mr-3"></div>
+                            <span class="text-lg font-bold text-gray-800">Monitoring chain 2</span>
+                            <span id="subchain2-name" class="ml-2 text-sm text-gray-500">(subchain2)</span>
+                        </div>
+                        <span id="subchain2-status" class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-semibold">Checking</span>
+                    </div>
+                    <div class="space-y-3 mt-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">RPC Port</span>
+                            <span class="font-bold text-blue-600">37103</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">Block Height</span>
+                            <span id="subchain2-height" class="font-bold text-purple-600">-</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">P2P Port</span>
+                            <span class="font-bold text-green-600">47103</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-400">
+                        <span id="subchain2-tip">Loading...</span>
+                    </div>
+                </div>
+
+                <!-- 副链3 -->
+                <div id="subchain3-card" class="bg-white rounded-xl shadow-2xl p-6 card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-pink-500 rounded-full pulse-ring mr-3"></div>
+                            <span class="text-lg font-bold text-gray-800">Monitoring chain 3</span>
+                            <span id="subchain3-name" class="ml-2 text-sm text-gray-500">(subchain3)</span>
+                        </div>
+                        <span id="subchain3-status" class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-semibold">Checking</span>
+                    </div>
+                    <div class="space-y-3 mt-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">RPC Port</span>
+                            <span class="font-bold text-blue-600">37104</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">Block Height</span>
+                            <span id="subchain3-height" class="font-bold text-purple-600">-</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 text-sm">P2P Port</span>
+                            <span class="font-bold text-green-600">47104</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-400">
+                        <span id="subchain3-tip">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- 底部信息 -->
+            <div class="mt-8 text-center text-gray-400 text-sm">
+                <p>Last Update: <span id="last-update">-</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,317 @@
+version: '3.8'
+
+services:
+  # 前端服务
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: xuperchain-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      # 挂载Docker socket，允许容器内执行docker命令
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - xuperchain-network
+    depends_on:
+      - main-node1
+      - sub1-node1
+      - sub2-node1
+      - sub3-node1
+    restart: unless-stopped
+
+  # 主链 - 节点1
+  main-node1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-main-node1
+    ports:
+      - "37101:37101"
+      - "47101:47101"
+      - "37301:37301"
+    volumes:
+      - ./chains/mainchain/node1/data:/home/xchain/data
+      - ./chains/mainchain/node1/conf:/home/xchain/conf
+      - ./chains/mainchain/node1/logs:/home/xchain/logs
+      - ./chains/mainchain/node1/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-main-node1
+      - CHAIN_NAME=mainchain
+      - NODE_NAME=node1
+    networks:
+      - xuperchain-network
+
+  # 主链 - 节点2
+  main-node2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-main-node2
+    ports:
+      - "37111:37111"
+      - "47111:47111"
+      - "37311:37311"
+    volumes:
+      - ./chains/mainchain/node2/data:/home/xchain/data
+      - ./chains/mainchain/node2/conf:/home/xchain/conf
+      - ./chains/mainchain/node2/logs:/home/xchain/logs
+      - ./chains/mainchain/node2/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-main-node2
+      - CHAIN_NAME=mainchain
+      - NODE_NAME=node2
+    networks:
+      - xuperchain-network
+    depends_on:
+      - main-node1
+
+  # 主链 - 节点3
+  main-node3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-main-node3
+    ports:
+      - "37121:37121"
+      - "47121:47121"
+      - "37321:37321"
+    volumes:
+      - ./chains/mainchain/node3/data:/home/xchain/data
+      - ./chains/mainchain/node3/conf:/home/xchain/conf
+      - ./chains/mainchain/node3/logs:/home/xchain/logs
+      - ./chains/mainchain/node3/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-main-node3
+      - CHAIN_NAME=mainchain
+      - NODE_NAME=node3
+    networks:
+      - xuperchain-network
+    depends_on:
+      - main-node1
+      - main-node2
+
+  # 副链1 - 节点1
+  sub1-node1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-sub1-node1
+    ports:
+      - "37102:37102"
+      - "47102:47102"
+      - "37302:37302"
+    volumes:
+      - ./chains/subchain1/node1/data:/home/xchain/data
+      - ./chains/subchain1/node1/conf:/home/xchain/conf
+      - ./chains/subchain1/node1/logs:/home/xchain/logs
+      - ./chains/subchain1/node1/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-sub1-node1
+      - CHAIN_NAME=subchain1
+      - NODE_NAME=node1
+    networks:
+      - xuperchain-network
+    depends_on:
+      - main-node1
+
+  # 副链1 - 节点2
+  sub1-node2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-sub1-node2
+    ports:
+      - "37112:37112"
+      - "47112:47112"
+      - "37312:37312"
+    volumes:
+      - ./chains/subchain1/node2/data:/home/xchain/data
+      - ./chains/subchain1/node2/conf:/home/xchain/conf
+      - ./chains/subchain1/node2/logs:/home/xchain/logs
+      - ./chains/subchain1/node2/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-sub1-node2
+      - CHAIN_NAME=subchain1
+      - NODE_NAME=node2
+    networks:
+      - xuperchain-network
+    depends_on:
+      - sub1-node1
+
+  # 副链1 - 节点3
+  sub1-node3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-sub1-node3
+    ports:
+      - "37122:37122"
+      - "47122:47122"
+      - "37322:37322"
+    volumes:
+      - ./chains/subchain1/node3/data:/home/xchain/data
+      - ./chains/subchain1/node3/conf:/home/xchain/conf
+      - ./chains/subchain1/node3/logs:/home/xchain/logs
+      - ./chains/subchain1/node3/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-sub1-node3
+      - CHAIN_NAME=subchain1
+      - NODE_NAME=node3
+    networks:
+      - xuperchain-network
+    depends_on:
+      - sub1-node1
+      - sub1-node2
+
+  # 副链2 - 节点1
+  sub2-node1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-sub2-node1
+    ports:
+      - "37103:37103"
+      - "47103:47103"
+      - "37303:37303"
+    volumes:
+      - ./chains/subchain2/node1/data:/home/xchain/data
+      - ./chains/subchain2/node1/conf:/home/xchain/conf
+      - ./chains/subchain2/node1/logs:/home/xchain/logs
+      - ./chains/subchain2/node1/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-sub2-node1
+      - CHAIN_NAME=subchain2
+      - NODE_NAME=node1
+    networks:
+      - xuperchain-network
+    depends_on:
+      - main-node1
+
+  # 副链2 - 节点2
+  sub2-node2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-sub2-node2
+    ports:
+      - "37113:37113"
+      - "47113:47113"
+      - "37313:37313"
+    volumes:
+      - ./chains/subchain2/node2/data:/home/xchain/data
+      - ./chains/subchain2/node2/conf:/home/xchain/conf
+      - ./chains/subchain2/node2/logs:/home/xchain/logs
+      - ./chains/subchain2/node2/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-sub2-node2
+      - CHAIN_NAME=subchain2
+      - NODE_NAME=node2
+    networks:
+      - xuperchain-network
+    depends_on:
+      - sub2-node1
+
+  # 副链2 - 节点3
+  sub2-node3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-sub2-node3
+    ports:
+      - "37123:37123"
+      - "47123:47123"
+      - "37323:37323"
+    volumes:
+      - ./chains/subchain2/node3/data:/home/xchain/data
+      - ./chains/subchain2/node3/conf:/home/xchain/conf
+      - ./chains/subchain2/node3/logs:/home/xchain/logs
+      - ./chains/subchain2/node3/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-sub2-node3
+      - CHAIN_NAME=subchain2
+      - NODE_NAME=node3
+    networks:
+      - xuperchain-network
+    depends_on:
+      - sub2-node1
+      - sub2-node2
+
+  # 副链3 - 节点1
+  sub3-node1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-sub3-node1
+    ports:
+      - "37104:37104"
+      - "47104:47104"
+      - "37304:37304"
+    volumes:
+      - ./chains/subchain3/node1/data:/home/xchain/data
+      - ./chains/subchain3/node1/conf:/home/xchain/conf
+      - ./chains/subchain3/node1/logs:/home/xchain/logs
+      - ./chains/subchain3/node1/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-sub3-node1
+      - CHAIN_NAME=subchain3
+      - NODE_NAME=node1
+    networks:
+      - xuperchain-network
+    depends_on:
+      - main-node1
+
+  # 副链3 - 节点2
+  sub3-node2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-sub3-node2
+    ports:
+      - "37114:37114"
+      - "47114:47114"
+      - "37314:37314"
+    volumes:
+      - ./chains/subchain3/node2/data:/home/xchain/data
+      - ./chains/subchain3/node2/conf:/home/xchain/conf
+      - ./chains/subchain3/node2/logs:/home/xchain/logs
+      - ./chains/subchain3/node2/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-sub3-node2
+      - CHAIN_NAME=subchain3
+      - NODE_NAME=node2
+    networks:
+      - xuperchain-network
+    depends_on:
+      - sub3-node1
+
+  # 副链3 - 节点3
+  sub3-node3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xuperchain-sub3-node3
+    ports:
+      - "37124:37124"
+      - "47124:47124"
+      - "37324:37324"
+    volumes:
+      - ./chains/subchain3/node3/data:/home/xchain/data
+      - ./chains/subchain3/node3/conf:/home/xchain/conf
+      - ./chains/subchain3/node3/logs:/home/xchain/logs
+      - ./chains/subchain3/node3/tmp:/home/xchain/tmp
+    environment:
+      - CONTAINER_NAME=xuperchain-sub3-node3
+      - CHAIN_NAME=subchain3
+      - NODE_NAME=node3
+    networks:
+      - xuperchain-network
+    depends_on:
+      - sub3-node1
+      - sub3-node2
+
+networks:
+  xuperchain-network:
+    driver: bridge
+

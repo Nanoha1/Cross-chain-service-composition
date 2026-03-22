@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Composite Services - Trusted Chain Multi-Chain Monitor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 min-h-screen">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-gray-800 text-white shadow-2xl z-50">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <i class="fas fa-link text-blue-400 mr-2"></i>
+                Trusted Chain
+            </h2>
+            <nav class="space-y-2">
+                <a href="index.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-home mr-3 w-5"></i>
+                    <span class="text-sm">Cross-chain IoT Service</span>
+                </a>
+                <a href="nodes.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-server mr-3 w-5"></i>
+                    <span class="text-sm">Node Management</span>
+                </a>
+                <a href="users.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-users mr-3 w-5"></i>
+                    <span class="text-sm">User Management</span>
+                </a>
+                <a href="data.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-database mr-3 w-5"></i>
+                    <span class="text-sm">Query Service</span>
+                </a>
+                <a href="data-all.html" class="flex items-center px-4 py-3 rounded-lg bg-blue-600 text-white">
+                    <i class="fas fa-list-alt mr-3 w-5"></i>
+                    <span class="text-sm">Composite Services</span>
+                </a>
+                <a href="transactions.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-history mr-3 w-5"></i>
+                    <span class="text-sm">Transaction History</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="ml-64 p-8">
+        <div class="container mx-auto">
+            <!-- 头部 -->
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold text-white mb-2">
+                        <i class="fas fa-list-alt text-blue-400"></i> Composite Services
+                    </h1>
+                    <p class="text-gray-300">View data from all chains</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="openUploadDataModal()" class="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition duration-200 shadow-lg">
+                        <i class="fas fa-upload mr-2"></i>Upload Data
+                    </button>
+                    <button onclick="openWriteDataModal()" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition duration-200 shadow-lg">
+                        <i class="fas fa-edit mr-2"></i>Write Data
+                    </button>
+                    <button onclick="refreshAllData(true)" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition duration-200 shadow-lg">
+                        <i class="fas fa-sync-alt mr-2"></i>Refresh All Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- 统计卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm mb-1">Main Chain Data</p>
+                            <p class="text-2xl font-bold text-gray-800" id="stat-main">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-link text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm mb-1">SubChain 1 Data</p>
+                            <p class="text-2xl font-bold text-gray-800" id="stat-sub1">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm mb-1">SubChain 2 Data</p>
+                            <p class="text-2xl font-bold text-gray-800" id="stat-sub2">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-road text-yellow-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm mb-1">SubChain 3 Data</p>
+                            <p class="text-2xl font-bold text-gray-800" id="stat-sub3">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-hospital text-red-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数据表格 -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <!-- Filters -->
+                <div class="mb-6 pb-6 border-b border-gray-200">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Chain Filter</label>
+                            <select id="chain-filter" onchange="filterData()" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="all">All Chains</option>
+                                <option value="xuper">Main Chain</option>
+                                <option value="subchain1">SubChain 1 (Health Data)</option>
+                                <option value="subchain2">SubChain 2 (Road Data)</option>
+                                <option value="subchain3">SubChain 3 (Medical Data)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Data Type</label>
+                            <select id="type-filter" onchange="filterData()" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="all">All Types</option>
+                                <option value="HEALTH">Health Data</option>
+                                <option value="ROAD">Road Data</option>
+                                <option value="MEDICAL">Medical Data</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+                            <input type="text" id="search-input" oninput="filterData()" 
+                                placeholder="Search key or content..."
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2 invisible">Actions</label>
+                            <button onclick="clearFilters()" class="w-full px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-sm h-[42px]">
+                                <i class="fas fa-times mr-2"></i>Clear Filters
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Delay (ms)</label>
+                            <div class="flex gap-2">
+                                <select id="delay-operator" onchange="filterData()" 
+                                    class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">No filter</option>
+                                    <option value=">=">>=</option>
+                                    <option value="<="><=</option>
+                                </select>
+                                <input type="number" id="delay-value" oninput="filterData()" 
+                                    placeholder="Value" min="0"
+                                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Availability (%)</label>
+                            <div class="flex gap-2">
+                                <select id="availability-operator" onchange="filterData()" 
+                                    class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">No filter</option>
+                                    <option value=">=">>=</option>
+                                    <option value="<="><=</option>
+                                </select>
+                                <input type="number" id="availability-value" oninput="filterData()" 
+                                    placeholder="Value" min="0" max="100"
+                                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2 invisible">Actions</label>
+                            <button onclick="combineData()" class="w-full px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm h-[42px]">
+                                <i class="fas fa-layer-group mr-2"></i>Service Composition
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                        <i class="fas fa-table text-purple-500 mr-2"></i>
+                        Data List
+                    </h3>
+                    <div class="text-sm text-gray-500">
+                        Total <span id="total-count">0</span> records
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-gray-50 border-b">
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Chain</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Key</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data Type</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Delay (ms)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Availability (%)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Timestamp</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-table-body" class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td colspan="7" class="px-4 py-8 text-center text-gray-500">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i>Loading data...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="mt-6 flex items-center justify-between border-t border-gray-200 pt-4">
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm text-gray-700">Show</span>
+                        <select id="page-size" onchange="changePageSize()" class="px-3 py-1 border border-gray-300 rounded text-sm">
+                            <option value="10">10</option>
+                            <option value="20" selected>20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span class="text-sm text-gray-700">per page</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button id="prev-page" onclick="previousPage()" class="px-4 py-2 border border-gray-300 rounded text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i class="fas fa-chevron-left mr-1"></i>Previous
+                        </button>
+                        <span class="text-sm text-gray-700">
+                            Page <span id="current-page">1</span> of <span id="total-pages">1</span>
+                        </span>
+                        <button id="next-page" onclick="nextPage()" class="px-4 py-2 border border-gray-300 rounded text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Next<i class="fas fa-chevron-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Combine Data Modal -->
+    <div id="combine-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 flex items-center">
+                    <i class="fas fa-layer-group text-green-600 mr-3"></i>
+                    Service Composition Task
+                </h3>
+                <button onclick="closeCombineModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Task Info -->
+            <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="text-gray-600">Task ID:</span>
+                        <span id="combine-task-id" class="ml-2 font-mono text-gray-800">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">Status:</span>
+                        <span id="combine-status" class="ml-2 font-semibold text-gray-800">Initializing</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">Start Time:</span>
+                        <span id="combine-start-time" class="ml-2 text-gray-800">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">Filtered Data Count:</span>
+                        <span id="combine-data-count" class="ml-2 font-semibold text-gray-800">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Steps -->
+            <div class="mb-6">
+                <h4 class="text-lg font-semibold text-gray-800 mb-4">Process Steps</h4>
+                <div class="space-y-4">
+                    <div id="step-analyze" class="flex items-center p-4 bg-gray-50 rounded-lg border-2 border-gray-200">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center mr-4 relative">
+                            <div class="step-circle"></div>
+                            <span class="text-gray-600 relative z-10">1</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-gray-800">Step 1: Analyzing Filtered Services</div>
+                            <div class="text-sm text-gray-600" id="step-analyze-desc">Preparing to analyze services from all chains...</div>
+                        </div>
+                    </div>
+                    <div id="step-select" class="flex items-center p-4 bg-gray-50 rounded-lg border-2 border-gray-200 opacity-50">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center mr-4 relative">
+                            <div class="step-circle"></div>
+                            <span class="text-gray-600 relative z-10">2</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-gray-800">Step 2: Selecting Optimal Services</div>
+                            <div class="text-sm text-gray-600" id="step-select-desc">Waiting...</div>
+                        </div>
+                    </div>
+                    <div id="step-transfer" class="flex items-center p-4 bg-gray-50 rounded-lg border-2 border-gray-200 opacity-50">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center mr-4 relative">
+                            <div class="step-circle"></div>
+                            <span class="text-gray-600 relative z-10">3</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-gray-800">Step 3: Executing Transfers</div>
+                            <div class="text-sm text-gray-600" id="step-transfer-desc">Waiting...</div>
+                        </div>
+                    </div>
+                    <div id="step-complete" class="flex items-center p-4 bg-gray-50 rounded-lg border-2 border-gray-200 opacity-50">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center mr-4 relative">
+                            <div class="step-circle"></div>
+                            <span class="text-gray-600 relative z-10">4</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-gray-800">Step 4: Task Complete</div>
+                            <div class="text-sm text-gray-600" id="step-complete-desc">Waiting...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+                @keyframes pulse-ring {
+                    0% {
+                        transform: scale(0.8);
+                        opacity: 1;
+                    }
+                    50% {
+                        transform: scale(1.2);
+                        opacity: 0.5;
+                    }
+                    100% {
+                        transform: scale(1.5);
+                        opacity: 0;
+                    }
+                }
+                
+                .step-circle {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    border: 2px solid currentColor;
+                    opacity: 0;
+                    animation: none;
+                }
+                
+                .step-circle.active {
+                    animation: pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+                }
+                
+                .step-circle.active::before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    border: 2px solid currentColor;
+                    animation: pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.5s;
+                }
+            </style>
+
+            <!-- Selected Data -->
+            <div id="selected-data-section" class="hidden mb-6">
+                <h4 class="text-lg font-semibold text-gray-800 mb-4">Selected Optimal Data</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="selected-data-list">
+                    <!-- Selected data cards will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Transfer Results -->
+            <div id="transfer-results-section" class="hidden mb-6">
+                <h4 class="text-lg font-semibold text-gray-800 mb-4">Transfer Results</h4>
+                <div class="space-y-2" id="transfer-results-list">
+                    <!-- Transfer results will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex justify-end gap-3 mt-6">
+                <button onclick="closeCombineModal()" class="px-6 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-sm font-semibold">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Write Data Modal -->
+    <div id="write-data-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                        <i class="fas fa-edit text-green-500 mr-2"></i>
+                        Write Data to Chain
+                    </h3>
+                    <button onclick="closeWriteDataModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-4 p-4 bg-blue-50 rounded-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-link mr-1"></i>Select Chain
+                            </label>
+                            <select id="write-modal-chain-selector" onchange="updateWriteModalChain()" 
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                <option value="xuper">Main Chain (xuper)</option>
+                                <option value="subchain1">SubChain 1 (subchain1)</option>
+                                <option value="subchain2">SubChain 2 (subchain2)</option>
+                                <option value="subchain3">SubChain 3 (subchain3)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-wallet mr-1"></i>Select Account
+                            </label>
+                            <select id="write-modal-account-selector" onchange="switchWriteModalAccount()" 
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                <option value="">Loading...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-blue-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-600">Account Address:</span>
+                                <span id="write-modal-account-address" class="ml-2 font-mono text-xs text-gray-800">-</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-gray-600">Balance:</span>
+                                <span id="write-modal-account-balance" class="ml-2 font-semibold text-sm text-blue-600">-</span>
+                                <button onclick="refreshWriteModalAccountBalance()" class="ml-2 px-2 py-1 bg-blue-100 hover:bg-blue-200 text-blue-600 rounded text-xs">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="write-modal-form" onsubmit="writeModalData(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Data Key</label>
+                            <input type="text" id="write-modal-data-key" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="e.g.: user:001" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Data Value</label>
+                            <input type="text" id="write-modal-data-value" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="e.g.: Alice" required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Data Type</label>
+                        <select id="write-modal-data-type" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="string">String</option>
+                            <option value="number">Number</option>
+                            <option value="json">JSON Object</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Contract Name</label>
+                        <input type="text" id="write-modal-contract-name" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            placeholder="e.g.: golangcounter" value="golangcounter">
+                        <p class="text-xs text-gray-500 mt-1">If the contract does not exist, the counter contract will be automatically deployed</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="closeWriteDataModal()" class="flex-1 px-4 py-3 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg font-semibold transition">
+                            Cancel
+                        </button>
+                        <button type="submit" class="flex-1 px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition">
+                            <i class="fas fa-paper-plane mr-2"></i>Write Data to Chain
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Data Modal -->
+    <div id="upload-data-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                        <i class="fas fa-upload text-purple-500 mr-2"></i>
+                        Upload JSON Data to Chain
+                    </h3>
+                    <button onclick="closeUploadDataModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-4 p-4 bg-blue-50 rounded-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-link mr-1"></i>Select Chain
+                            </label>
+                            <select id="upload-modal-chain-selector" onchange="updateUploadModalChain()" 
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm">
+                                <option value="xuper">Main Chain (xuper)</option>
+                                <option value="subchain1">SubChain 1 (subchain1)</option>
+                                <option value="subchain2">SubChain 2 (subchain2)</option>
+                                <option value="subchain3">SubChain 3 (subchain3)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-wallet mr-1"></i>Select Account
+                            </label>
+                            <select id="upload-modal-account-selector" onchange="switchUploadModalAccount()" 
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm">
+                                <option value="">Loading...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-blue-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-600">Account Address:</span>
+                                <span id="upload-modal-account-address" class="ml-2 font-mono text-xs text-gray-800">-</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-gray-600">Balance:</span>
+                                <span id="upload-modal-account-balance" class="ml-2 font-semibold text-sm text-blue-600">-</span>
+                                <button onclick="refreshUploadModalAccountBalance()" class="ml-2 px-2 py-1 bg-blue-100 hover:bg-blue-200 text-blue-600 rounded text-xs">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="upload-modal-form" onsubmit="uploadModalData(event)">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-file-json mr-1"></i>Select JSON File
+                        </label>
+                        <div class="flex items-center gap-2">
+                            <input type="file" id="upload-modal-file-input" accept=".json" 
+                                onchange="handleFileSelect(event)"
+                                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm"
+                                required>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">Select a JSON file containing data records. Each record should have an "id" field as the key.</p>
+                        <div id="upload-file-preview" class="mt-2 p-3 bg-gray-50 rounded-lg text-xs text-gray-600 hidden">
+                            <div class="font-semibold mb-1">File Preview:</div>
+                            <div id="upload-file-info" class="text-gray-500"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="upload-progress" class="mb-4 hidden">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-700">Upload Progress</span>
+                            <span id="upload-progress-text" class="text-sm text-gray-600">0/0</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="upload-progress-bar" class="bg-purple-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                        <div id="upload-status" class="mt-2 text-sm text-gray-600"></div>
+                    </div>
+                    
+                    <div class="flex gap-3">
+                        <button type="button" onclick="closeUploadDataModal()" class="flex-1 px-4 py-3 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg font-semibold transition">
+                            Cancel
+                        </button>
+                        <button type="submit" id="upload-submit-btn" class="flex-1 px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition">
+                            <i class="fas fa-upload mr-2"></i>Upload to Chain
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="data-all.js"></script>
+</body>
+</html>
+

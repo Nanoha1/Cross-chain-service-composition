@@ -1,0 +1,512 @@
+﻿[
+    {
+        "roadData":  {
+                         "roadName":  "Highway1",
+                         "averageSpeed":  75,
+                         "section":  "0km-50km",
+                         "latitude":  45.0897,
+                         "address":  "Highway1, Section 0km-50km, Beijing",
+                         "longitude":  117.8945,
+                         "condition":  "Fluid"
+                     },
+        "id":  "ROAD20260101001",
+        "qos":  {
+                    "delay":  49,
+                    "timestamp":  "2026-01-01 03:38:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Highway2",
+                         "averageSpeed":  84,
+                         "section":  "50km-100km",
+                         "latitude":  19.9676,
+                         "address":  "Highway2, Section 50km-100km, Shanghai",
+                         "longitude":  115.8455,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101002",
+        "qos":  {
+                    "delay":  22,
+                    "timestamp":  "2026-01-01 03:33:10",
+                    "availability":  98
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Expressway3",
+                         "averageSpeed":  91,
+                         "section":  "100km-150km",
+                         "latitude":  21.6468,
+                         "address":  "Expressway3, Section 100km-150km, Guangzhou",
+                         "longitude":  111.4066,
+                         "condition":  "Congested"
+                     },
+        "id":  "ROAD20260101003",
+        "qos":  {
+                    "delay":  47,
+                    "timestamp":  "2026-01-01 03:28:10",
+                    "availability":  98
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Main Road",
+                         "averageSpeed":  2,
+                         "section":  "150km-200km",
+                         "latitude":  93.9412,
+                         "address":  "Main Road, Section 150km-200km, Shenzhen",
+                         "longitude":  192.3349,
+                         "condition":  "Blocked"
+                     },
+        "id":  "ROAD20260101004",
+        "qos":  {
+                    "delay":  24,
+                    "timestamp":  "2026-01-01 03:23:10",
+                    "availability":  95
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Ring Road",
+                         "averageSpeed":  118,
+                         "section":  "200km-250km",
+                         "latitude":  49.9965,
+                         "address":  "Ring Road, Section 200km-250km, Hangzhou",
+                         "longitude":  96.4881,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101005",
+        "qos":  {
+                    "delay":  34,
+                    "timestamp":  "2026-01-01 03:18:10",
+                    "availability":  99
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Bridge Road",
+                         "averageSpeed":  60,
+                         "section":  "0km-30km",
+                         "latitude":  51.1131,
+                         "address":  "Bridge Road, Section 0km-30km, Chengdu",
+                         "longitude":  82.9762,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101006",
+        "qos":  {
+                    "delay":  37,
+                    "timestamp":  "2026-01-01 03:13:10",
+                    "availability":  96
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Tunnel Road",
+                         "averageSpeed":  84,
+                         "section":  "30km-60km",
+                         "latitude":  38.3239,
+                         "address":  "Tunnel Road, Section 30km-60km, Nanjing",
+                         "longitude":  94.5665,
+                         "condition":  "Fluid"
+                     },
+        "id":  "ROAD20260101007",
+        "qos":  {
+                    "delay":  48,
+                    "timestamp":  "2026-01-01 03:08:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Coastal Highway",
+                         "averageSpeed":  89,
+                         "section":  "60km-90km",
+                         "latitude":  24.3829,
+                         "address":  "Coastal Highway, Section 60km-90km, Wuhan",
+                         "longitude":  104.8695,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101008",
+        "qos":  {
+                    "delay":  26,
+                    "timestamp":  "2026-01-01 03:03:10",
+                    "availability":  99
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Mountain Road",
+                         "averageSpeed":  -8,
+                         "section":  "90km-120km",
+                         "latitude":  90.2818,
+                         "address":  "Mountain Road, Section 90km-120km, Xi\u0027an",
+                         "longitude":  198.7845,
+                         "condition":  "Congested"
+                     },
+        "id":  "ROAD20260101009",
+        "qos":  {
+                    "delay":  28,
+                    "timestamp":  "2026-01-01 02:58:10",
+                    "availability":  96
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Urban Expressway",
+                         "averageSpeed":  46,
+                         "section":  "120km-150km",
+                         "latitude":  39.757,
+                         "address":  "Urban Expressway, Section 120km-150km, Tianjin",
+                         "longitude":  105.8701,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101010",
+        "qos":  {
+                    "delay":  49,
+                    "timestamp":  "2026-01-01 02:53:10",
+                    "availability":  99
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Highway1",
+                         "averageSpeed":  64,
+                         "section":  "0km-50km",
+                         "latitude":  43.4309,
+                         "address":  "Highway1, Section 0km-50km, Beijing",
+                         "longitude":  125.7143,
+                         "condition":  "Fluid"
+                     },
+        "id":  "ROAD20260101011",
+        "qos":  {
+                    "delay":  42,
+                    "timestamp":  "2026-01-01 02:48:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Highway2",
+                         "averageSpeed":  77,
+                         "section":  "50km-100km",
+                         "latitude":  26.1612,
+                         "address":  "Highway2, Section 50km-100km, Shanghai",
+                         "longitude":  91.0371,
+                         "condition":  "Fluid"
+                     },
+        "id":  "ROAD20260101012",
+        "qos":  {
+                    "delay":  38,
+                    "timestamp":  "2026-01-01 02:43:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Expressway3",
+                         "averageSpeed":  95,
+                         "section":  "100km-150km",
+                         "latitude":  19.7459,
+                         "address":  "Expressway3, Section 100km-150km, Guangzhou",
+                         "longitude":  80.1496,
+                         "condition":  "Fluid"
+                     },
+        "id":  "ROAD20260101013",
+        "qos":  {
+                    "delay":  48,
+                    "timestamp":  "2026-01-01 02:38:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Main Road",
+                         "averageSpeed":  6,
+                         "section":  "150km-200km",
+                         "latitude":  90.0883,
+                         "address":  "Main Road, Section 150km-200km, Shenzhen",
+                         "longitude":  197.6692,
+                         "condition":  "Blocked"
+                     },
+        "id":  "ROAD20260101014",
+        "qos":  {
+                    "delay":  45,
+                    "timestamp":  "2026-01-01 02:33:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Ring Road",
+                         "averageSpeed":  45,
+                         "section":  "200km-250km",
+                         "latitude":  23.3471,
+                         "address":  "Ring Road, Section 200km-250km, Hangzhou",
+                         "longitude":  106.173,
+                         "condition":  "Fluid"
+                     },
+        "id":  "ROAD20260101015",
+        "qos":  {
+                    "delay":  33,
+                    "timestamp":  "2026-01-01 02:28:10",
+                    "availability":  98
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Bridge Road",
+                         "averageSpeed":  78,
+                         "section":  "0km-30km",
+                         "latitude":  41.704,
+                         "address":  "Bridge Road, Section 0km-30km, Chengdu",
+                         "longitude":  126.0096,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101016",
+        "qos":  {
+                    "delay":  43,
+                    "timestamp":  "2026-01-01 02:23:10",
+                    "availability":  95
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Tunnel Road",
+                         "averageSpeed":  93,
+                         "section":  "30km-60km",
+                         "latitude":  21.2638,
+                         "address":  "Tunnel Road, Section 30km-60km, Nanjing",
+                         "longitude":  102.7267,
+                         "condition":  "Congested"
+                     },
+        "id":  "ROAD20260101017",
+        "qos":  {
+                    "delay":  45,
+                    "timestamp":  "2026-01-01 02:18:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Coastal Highway",
+                         "averageSpeed":  109,
+                         "section":  "60km-90km",
+                         "latitude":  43.3481,
+                         "address":  "Coastal Highway, Section 60km-90km, Wuhan",
+                         "longitude":  75.2273,
+                         "condition":  "Congested"
+                     },
+        "id":  "ROAD20260101018",
+        "qos":  {
+                    "delay":  33,
+                    "timestamp":  "2026-01-01 02:13:10",
+                    "availability":  99
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Mountain Road",
+                         "averageSpeed":  -8,
+                         "section":  "90km-120km",
+                         "latitude":  97.7072,
+                         "address":  "Mountain Road, Section 90km-120km, Xi\u0027an",
+                         "longitude":  195.889,
+                         "condition":  "Congested"
+                     },
+        "id":  "ROAD20260101019",
+        "qos":  {
+                    "delay":  25,
+                    "timestamp":  "2026-01-01 02:08:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Urban Expressway",
+                         "averageSpeed":  118,
+                         "section":  "120km-150km",
+                         "latitude":  39.836,
+                         "address":  "Urban Expressway, Section 120km-150km, Tianjin",
+                         "longitude":  77.7367,
+                         "condition":  "Congested"
+                     },
+        "id":  "ROAD20260101020",
+        "qos":  {
+                    "delay":  33,
+                    "timestamp":  "2026-01-01 02:03:10",
+                    "availability":  95
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Highway1",
+                         "averageSpeed":  77,
+                         "section":  "0km-50km",
+                         "latitude":  28.8883,
+                         "address":  "Highway1, Section 0km-50km, Beijing",
+                         "longitude":  110.1141,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101021",
+        "qos":  {
+                    "delay":  23,
+                    "timestamp":  "2026-01-01 01:58:10",
+                    "availability":  95
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Highway2",
+                         "averageSpeed":  77,
+                         "section":  "50km-100km",
+                         "latitude":  25.8806,
+                         "address":  "Highway2, Section 50km-100km, Shanghai",
+                         "longitude":  78.0502,
+                         "condition":  "Fluid"
+                     },
+        "id":  "ROAD20260101022",
+        "qos":  {
+                    "delay":  24,
+                    "timestamp":  "2026-01-01 01:53:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Expressway3",
+                         "averageSpeed":  74,
+                         "section":  "100km-150km",
+                         "latitude":  50.8846,
+                         "address":  "Expressway3, Section 100km-150km, Guangzhou",
+                         "longitude":  114.2141,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101023",
+        "qos":  {
+                    "delay":  46,
+                    "timestamp":  "2026-01-01 01:48:10",
+                    "availability":  98
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Main Road",
+                         "averageSpeed":  100,
+                         "section":  "150km-200km",
+                         "latitude":  40.6211,
+                         "address":  "Main Road, Section 150km-200km, Shenzhen",
+                         "longitude":  106.3426,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101024",
+        "qos":  {
+                    "delay":  35,
+                    "timestamp":  "2026-01-01 01:43:10",
+                    "availability":  99
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Ring Road",
+                         "averageSpeed":  39,
+                         "section":  "200km-250km",
+                         "latitude":  49.757,
+                         "address":  "Ring Road, Section 200km-250km, Hangzhou",
+                         "longitude":  97.0904,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101025",
+        "qos":  {
+                    "delay":  39,
+                    "timestamp":  "2026-01-01 01:38:10",
+                    "availability":  95
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Bridge Road",
+                         "averageSpeed":  6,
+                         "section":  "0km-30km",
+                         "latitude":  99.398,
+                         "address":  "Bridge Road, Section 0km-30km, Chengdu",
+                         "longitude":  193.0415,
+                         "condition":  "Blocked"
+                     },
+        "id":  "ROAD20260101026",
+        "qos":  {
+                    "delay":  39,
+                    "timestamp":  "2026-01-01 01:33:10",
+                    "availability":  96
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Tunnel Road",
+                         "averageSpeed":  113,
+                         "section":  "30km-60km",
+                         "latitude":  25.5965,
+                         "address":  "Tunnel Road, Section 30km-60km, Nanjing",
+                         "longitude":  82.8664,
+                         "condition":  "Slow"
+                     },
+        "id":  "ROAD20260101027",
+        "qos":  {
+                    "delay":  41,
+                    "timestamp":  "2026-01-01 01:28:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Coastal Highway",
+                         "averageSpeed":  40,
+                         "section":  "60km-90km",
+                         "latitude":  27.1435,
+                         "address":  "Coastal Highway, Section 60km-90km, Wuhan",
+                         "longitude":  93.4245,
+                         "condition":  "Fluid"
+                     },
+        "id":  "ROAD20260101028",
+        "qos":  {
+                    "delay":  31,
+                    "timestamp":  "2026-01-01 01:23:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Mountain Road",
+                         "averageSpeed":  116,
+                         "section":  "90km-120km",
+                         "latitude":  27.9968,
+                         "address":  "Mountain Road, Section 90km-120km, Xi\u0027an",
+                         "longitude":  91.3434,
+                         "condition":  "Congested"
+                     },
+        "id":  "ROAD20260101029",
+        "qos":  {
+                    "delay":  40,
+                    "timestamp":  "2026-01-01 01:18:10",
+                    "availability":  97
+                }
+    },
+    {
+        "roadData":  {
+                         "roadName":  "Urban Expressway",
+                         "averageSpeed":  103,
+                         "section":  "120km-150km",
+                         "latitude":  28.0699,
+                         "address":  "Urban Expressway, Section 120km-150km, Tianjin",
+                         "longitude":  89.1054,
+                         "condition":  "Congested"
+                     },
+        "id":  "ROAD20260101030",
+        "qos":  {
+                    "delay":  30,
+                    "timestamp":  "2026-01-01 01:13:10",
+                    "availability":  96
+                }
+    }
+]

@@ -1,0 +1,22 @@
+{
+  "templateData": {
+    "id": "MEDICAL20251231001",
+    "medicalData": {
+      "hospitalName": "Beijing General Hospital",
+      "department": "Cardiology",
+      "totalBeds": 150,
+      "availableBeds": 45,
+      "occupancyRate": 70.0,
+      "latitude": 39.9042,
+      "longitude": 116.4074,
+      "address": "123 Medical Street, Chaoyang District, Beijing"
+    },
+    "qos": {
+      "delay": 28,
+      "availability": 97,
+      "timestamp": "2025-12-31 22:00:00"
+    }
+  }
+}
+
+

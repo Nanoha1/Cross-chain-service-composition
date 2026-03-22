@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Trusted Chain Multi-Chain Monitor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+            100% { transform: scale(0.8); opacity: 1; }
+        }
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 min-h-screen">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-gray-800 text-white shadow-2xl z-50">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <i class="fas fa-link text-blue-400 mr-2"></i>
+                Trusted Chain
+            </h2>
+            <nav class="space-y-2">
+                <a href="index.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-home mr-3 w-5"></i>
+                    <span class="text-sm">Cross-chain IoT Service</span>
+                </a>
+                <a href="nodes.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-server mr-3 w-5"></i>
+                    <span class="text-sm">Node Management</span>
+                </a>
+                <a href="users.html" class="flex items-center px-4 py-3 rounded-lg bg-blue-600 text-white">
+                    <i class="fas fa-users mr-3 w-5"></i>
+                    <span class="text-sm">User Management</span>
+                </a>
+                <a href="data.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-database mr-3 w-5"></i>
+                    <span class="text-sm">Query Service</span>
+                </a>
+                <a href="data-all.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-list-alt mr-3 w-5"></i>
+                    <span class="text-sm">Composite Services</span>
+                </a>
+                <a href="transactions.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-history mr-3 w-5"></i>
+                    <span class="text-sm">Transaction History</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="ml-64 p-8">
+        <div class="container mx-auto">
+            <!-- 头部 -->
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold text-white mb-2">
+                        <i class="fas fa-users text-blue-400"></i> User Management
+                    </h1>
+                    <p class="text-gray-300">Create and manage blockchain accounts</p>
+                </div>
+            </div>
+
+            <!-- Account Status and Details -->
+            <div id="account-status" class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Account Status</h3>
+                
+                <!-- Not logged in state -->
+                <div id="not-logged-in" class="text-center py-8">
+                    <p class="text-gray-600 mb-4">Not logged in</p>
+                    <button onclick="showLoginModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                </div>
+                
+                <!-- Logged in state -->
+                <div id="logged-in" class="hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Account Address</label>
+                            <div class="flex items-center">
+                                <code id="detail-address" class="bg-gray-100 px-3 py-2 rounded text-sm flex-1"></code>
+                                <button onclick="copyAddress()" class="ml-2 px-3 py-2 bg-gray-200 hover:bg-gray-300 rounded text-sm">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Account Balance</label>
+                            <p id="detail-balance" class="text-lg font-semibold text-gray-800">-</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Chain</label>
+                            <p id="detail-chain" class="text-gray-800">-</p>
+                        </div>
+                        <div class="flex items-end gap-2">
+                            <button onclick="refreshBalance()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm">
+                                <i class="fas fa-sync-alt mr-2"></i>Refresh Balance
+                            </button>
+                            <button onclick="logout()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Function cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Create account card -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-user-plus text-green-500 mr-2"></i>
+                        Create New Account
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4">Create a new blockchain account for initiating transactions and calling contracts</p>
+                    <form id="create-account-form" onsubmit="createAccount(event)">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Account Name</label>
+                            <input type="text" id="account-name" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="e.g.: alice" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Select Chain</label>
+                            <select id="create-chain" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="xuper">Main Chain (xuper)</option>
+                                <option value="subchain1">SubChain 1 (subchain1)</option>
+                                <option value="subchain2">SubChain 2 (subchain2)</option>
+                                <option value="subchain3">SubChain 3 (subchain3)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition">
+                            <i class="fas fa-plus mr-2"></i>Create Account
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Account list card -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-list text-blue-500 mr-2"></i>
+                        Account List
+                    </h3>
+                    <div id="account-list" class="space-y-2 max-h-96 overflow-y-auto">
+                        <p class="text-gray-500 text-sm text-center py-4">No accounts, please create an account first</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Login modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Login Account</h3>
+            <form id="login-form" onsubmit="login(event)">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Select Account</label>
+                    <select id="login-account" 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        <option value="">Please select an account</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Select Chain</label>
+                    <select id="login-chain" 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="xuper">Main Chain (xuper)</option>
+                        <option value="subchain1">SubChain 1 (subchain1)</option>
+                        <option value="subchain2">SubChain 2 (subchain2)</option>
+                        <option value="subchain3">SubChain 3 (subchain3)</option>
+                    </select>
+                </div>
+                <div class="flex gap-3">
+                    <button type="submit" class="flex-1 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button type="button" onclick="hideLoginModal()" class="px-4 py-3 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg font-semibold">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="users.js"></script>
+</body>
+</html>
+

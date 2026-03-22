@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Management - Trusted Chain Multi-Chain Monitor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+            100% { transform: scale(0.8); opacity: 1; }
+        }
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .table-row-hover:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 min-h-screen">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-gray-800 text-white shadow-2xl z-50">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <i class="fas fa-link text-blue-400 mr-2"></i>
+                Trusted Chain
+            </h2>
+            <nav class="space-y-2">
+                <a href="index.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-home mr-3 w-5"></i>
+                    <span class="text-sm">Cross-chain IoT Service</span>
+                </a>
+                <a href="nodes.html" class="flex items-center px-4 py-3 rounded-lg bg-blue-600 text-white">
+                    <i class="fas fa-server mr-3 w-5"></i>
+                    <span class="text-sm">Node Management</span>
+                </a>
+                <a href="users.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-users mr-3 w-5"></i>
+                    <span class="text-sm">User Management</span>
+                </a>
+                <a href="data.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-database mr-3 w-5"></i>
+                    <span class="text-sm">Query Service</span>
+                </a>
+                <a href="data-all.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-list-alt mr-3 w-5"></i>
+                    <span class="text-sm">Composite Services</span>
+                </a>
+                <a href="transactions.html" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition">
+                    <i class="fas fa-history mr-3 w-5"></i>
+                    <span class="text-sm">Transaction History</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="ml-64 p-8">
+        <div class="container mx-auto">
+            <!-- 头部 -->
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold text-white mb-2">
+                        <i class="fas fa-server text-blue-400"></i> Node Management
+                    </h1>
+                    <p class="text-gray-300">View and manage all blockchain nodes</p>
+                </div>
+                <button onclick="refreshNodes()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition duration-200 shadow-lg">
+                    <i class="fas fa-sync-alt mr-2"></i>Refresh
+                </button>
+            </div>
+
+            <!-- 统计卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm mb-1">Total Nodes</p>
+                            <p id="total-nodes" class="text-3xl font-bold text-gray-800">-</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-server text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm mb-1">Running</p>
+                            <p id="running-nodes" class="text-3xl font-bold text-green-600">-</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm mb-1">Offline</p>
+                            <p id="offline-nodes" class="text-3xl font-bold text-red-600">-</p>
+                        </div>
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-times-circle text-red-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm mb-1">Total Block Height</p>
+                            <p id="total-height" class="text-3xl font-bold text-purple-600">-</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-cubes text-purple-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 节点表格 -->
+            <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <h2 class="text-xl font-bold text-gray-800">Node List</h2>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Node Name</th>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Chain</th>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Container</th>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">RPC Port</th>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">P2P Port</th>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Block Height</th>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latest Block</th>
+                            </tr>
+                        </thead>
+                        <tbody id="nodes-table-body" class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td colspan="8" class="px-6 py-8 text-center text-gray-500">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i>Loading...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bottom info -->
+            <div class="mt-8 text-center text-gray-400 text-sm">
+                <p>Last Update: <span id="last-update">-</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="nodes.js"></script>
+</body>
+</html>
+

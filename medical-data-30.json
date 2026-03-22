@@ -1,0 +1,542 @@
+﻿[
+    {
+        "id":  "MEDICAL20260101001",
+        "medicalData":  {
+                            "address":  "123 Medical Street, Beijing",
+                            "availableBeds":  99,
+                            "latitude":  23.7306,
+                            "occupancyRate":  16.1,
+                            "department":  "Cardiology",
+                            "totalBeds":  118,
+                            "hospitalName":  "Beijing General Hospital",
+                            "longitude":  80.7711
+                        },
+        "qos":  {
+                    "delay":  47,
+                    "timestamp":  "2026-01-01 13:32:49",
+                    "availability":  96
+                }
+    },
+    {
+        "id":  "MEDICAL20260101002",
+        "medicalData":  {
+                            "address":  "456 Health Avenue, Shanghai",
+                            "availableBeds":  78,
+                            "latitude":  50.6544,
+                            "occupancyRate":  58.7,
+                            "department":  "Neurology",
+                            "totalBeds":  189,
+                            "hospitalName":  "Shanghai Medical Center",
+                            "longitude":  130.2256
+                        },
+        "qos":  {
+                    "delay":  26,
+                    "timestamp":  "2026-01-01 13:27:49",
+                    "availability":  95
+                }
+    },
+    {
+        "id":  "MEDICAL20260101003",
+        "medicalData":  {
+                            "address":  "789 Hospital Road, Guangzhou",
+                            "availableBeds":  56,
+                            "latitude":  41.9956,
+                            "occupancyRate":  69.2,
+                            "department":  "Orthopedics",
+                            "totalBeds":  182,
+                            "hospitalName":  "Guangzhou Hospital",
+                            "longitude":  101.3547
+                        },
+        "qos":  {
+                    "delay":  37,
+                    "timestamp":  "2026-01-01 13:22:49",
+                    "availability":  98
+                }
+    },
+    {
+        "id":  "MEDICAL20260101004",
+        "medicalData":  {
+                            "address":  "321 Clinic Lane, Shenzhen",
+                            "availableBeds":  185,
+                            "latitude":  25.9669,
+                            "occupancyRate":  28,
+                            "department":  "Pediatrics",
+                            "totalBeds":  257,
+                            "hospitalName":  "Shenzhen Health Center",
+                            "longitude":  91.8945
+                        },
+        "qos":  {
+                    "delay":  47,
+                    "timestamp":  "2026-01-01 13:17:49",
+                    "availability":  99
+                }
+    },
+    {
+        "id":  "MEDICAL20260101005",
+        "medicalData":  {
+                            "address":  "654 Medical Center, Hangzhou",
+                            "availableBeds":  -27,
+                            "latitude":  92.7571,
+                            "occupancyRate":  -12.9,
+                            "department":  "Emergency",
+                            "totalBeds":  -11,
+                            "hospitalName":  "Hangzhou Medical Institute",
+                            "longitude":  189.6715
+                        },
+        "qos":  {
+                    "delay":  35,
+                    "timestamp":  "2026-01-01 13:12:49",
+                    "availability":  97
+                }
+    },
+    {
+        "id":  "MEDICAL20260101006",
+        "medicalData":  {
+                            "address":  "987 Hospital Drive, Chengdu",
+                            "availableBeds":  5,
+                            "latitude":  33.873,
+                            "occupancyRate":  98.1,
+                            "department":  "Surgery",
+                            "totalBeds":  261,
+                            "hospitalName":  "Chengdu Hospital",
+                            "longitude":  98.7232
+                        },
+        "qos":  {
+                    "delay":  29,
+                    "timestamp":  "2026-01-01 13:07:49",
+                    "availability":  99
+                }
+    },
+    {
+        "id":  "MEDICAL20260101007",
+        "medicalData":  {
+                            "address":  "147 Health Plaza, Nanjing",
+                            "availableBeds":  127,
+                            "latitude":  49.602,
+                            "occupancyRate":  5.9,
+                            "department":  "Internal Medicine",
+                            "totalBeds":  135,
+                            "hospitalName":  "Nanjing Medical Center",
+                            "longitude":  113.1857
+                        },
+        "qos":  {
+                    "delay":  25,
+                    "timestamp":  "2026-01-01 13:02:49",
+                    "availability":  98
+                }
+    },
+    {
+        "id":  "MEDICAL20260101008",
+        "medicalData":  {
+                            "address":  "258 Medical Court, Wuhan",
+                            "availableBeds":  13,
+                            "latitude":  31.2879,
+                            "occupancyRate":  95.3,
+                            "department":  "Oncology",
+                            "totalBeds":  277,
+                            "hospitalName":  "Wuhan General Hospital",
+                            "longitude":  73.1172
+                        },
+        "qos":  {
+                    "delay":  47,
+                    "timestamp":  "2026-01-01 12:57:49",
+                    "availability":  98
+                }
+    },
+    {
+        "id":  "MEDICAL20260101009",
+        "medicalData":  {
+                            "address":  "369 Hospital Way, Xi\u0027an",
+                            "availableBeds":  37,
+                            "latitude":  33.8383,
+                            "occupancyRate":  84.4,
+                            "department":  "Gynecology",
+                            "totalBeds":  237,
+                            "hospitalName":  "Xi\u0027an Health Center",
+                            "longitude":  92.3227
+                        },
+        "qos":  {
+                    "delay":  31,
+                    "timestamp":  "2026-01-01 12:52:49",
+                    "availability":  97
+                }
+    },
+    {
+        "id":  "MEDICAL20260101010",
+        "medicalData":  {
+                            "address":  "741 Health Boulevard, Tianjin",
+                            "availableBeds":  51,
+                            "latitude":  30.4801,
+                            "occupancyRate":  74.9,
+                            "department":  "Dermatology",
+                            "totalBeds":  203,
+                            "hospitalName":  "Tianjin Medical Institute",
+                            "longitude":  125.6661
+                        },
+        "qos":  {
+                    "delay":  27,
+                    "timestamp":  "2026-01-01 12:47:49",
+                    "availability":  98
+                }
+    },
+    {
+        "id":  "MEDICAL20260101011",
+        "medicalData":  {
+                            "address":  "123 Medical Street, Beijing",
+                            "availableBeds":  -18,
+                            "latitude":  99.3941,
+                            "occupancyRate":  -19.5,
+                            "department":  "Cardiology",
+                            "totalBeds":  -8,
+                            "hospitalName":  "Beijing General Hospital",
+                            "longitude":  190.7256
+                        },
+        "qos":  {
+                    "delay":  36,
+                    "timestamp":  "2026-01-01 12:42:49",
+                    "availability":  99
+                }
+    },
+    {
+        "id":  "MEDICAL20260101012",
+        "medicalData":  {
+                            "address":  "456 Health Avenue, Shanghai",
+                            "availableBeds":  136,
+                            "latitude":  50.8608,
+                            "occupancyRate":  52.1,
+                            "department":  "Neurology",
+                            "totalBeds":  284,
+                            "hospitalName":  "Shanghai Medical Center",
+                            "longitude":  103.5647
+                        },
+        "qos":  {
+                    "delay":  46,
+                    "timestamp":  "2026-01-01 12:37:49",
+                    "availability":  95
+                }
+    },
+    {
+        "id":  "MEDICAL20260101013",
+        "medicalData":  {
+                            "address":  "789 Hospital Road, Guangzhou",
+                            "availableBeds":  124,
+                            "latitude":  32.189,
+                            "occupancyRate":  34.4,
+                            "department":  "Orthopedics",
+                            "totalBeds":  189,
+                            "hospitalName":  "Guangzhou Hospital",
+                            "longitude":  110.5365
+                        },
+        "qos":  {
+                    "delay":  39,
+                    "timestamp":  "2026-01-01 12:32:49",
+                    "availability":  99
+                }
+    },
+    {
+        "id":  "MEDICAL20260101014",
+        "medicalData":  {
+                            "address":  "321 Clinic Lane, Shenzhen",
+                            "availableBeds":  152,
+                            "latitude":  39.0932,
+                            "occupancyRate":  3.2,
+                            "department":  "Pediatrics",
+                            "totalBeds":  157,
+                            "hospitalName":  "Shenzhen Health Center",
+                            "longitude":  103.2888
+                        },
+        "qos":  {
+                    "delay":  41,
+                    "timestamp":  "2026-01-01 12:27:49",
+                    "availability":  96
+                }
+    },
+    {
+        "id":  "MEDICAL20260101015",
+        "medicalData":  {
+                            "address":  "654 Medical Center, Hangzhou",
+                            "availableBeds":  8,
+                            "latitude":  31.7377,
+                            "occupancyRate":  93.2,
+                            "department":  "Emergency",
+                            "totalBeds":  118,
+                            "hospitalName":  "Hangzhou Medical Institute",
+                            "longitude":  86.137
+                        },
+        "qos":  {
+                    "delay":  20,
+                    "timestamp":  "2026-01-01 12:22:49",
+                    "availability":  96
+                }
+    },
+    {
+        "id":  "MEDICAL20260101016",
+        "medicalData":  {
+                            "address":  "987 Hospital Drive, Chengdu",
+                            "availableBeds":  83,
+                            "latitude":  30.6958,
+                            "occupancyRate":  33.1,
+                            "department":  "Surgery",
+                            "totalBeds":  124,
+                            "hospitalName":  "Chengdu Hospital",
+                            "longitude":  132.2384
+                        },
+        "qos":  {
+                    "delay":  27,
+                    "timestamp":  "2026-01-01 12:17:49",
+                    "availability":  95
+                }
+    },
+    {
+        "id":  "MEDICAL20260101017",
+        "medicalData":  {
+                            "address":  "147 Health Plaza, Nanjing",
+                            "availableBeds":  -12,
+                            "latitude":  92.6107,
+                            "occupancyRate":  -18.7,
+                            "department":  "Internal Medicine",
+                            "totalBeds":  -3,
+                            "hospitalName":  "Nanjing Medical Center",
+                            "longitude":  183.7274
+                        },
+        "qos":  {
+                    "delay":  22,
+                    "timestamp":  "2026-01-01 12:12:49",
+                    "availability":  98
+                }
+    },
+    {
+        "id":  "MEDICAL20260101018",
+        "medicalData":  {
+                            "address":  "258 Medical Court, Wuhan",
+                            "availableBeds":  71,
+                            "latitude":  44.2077,
+                            "occupancyRate":  13.4,
+                            "department":  "Oncology",
+                            "totalBeds":  82,
+                            "hospitalName":  "Wuhan General Hospital",
+                            "longitude":  81.5889
+                        },
+        "qos":  {
+                    "delay":  28,
+                    "timestamp":  "2026-01-01 12:07:49",
+                    "availability":  98
+                }
+    },
+    {
+        "id":  "MEDICAL20260101019",
+        "medicalData":  {
+                            "address":  "369 Hospital Way, Xi\u0027an",
+                            "availableBeds":  78,
+                            "latitude":  19.1287,
+                            "occupancyRate":  19.6,
+                            "department":  "Gynecology",
+                            "totalBeds":  97,
+                            "hospitalName":  "Xi\u0027an Health Center",
+                            "longitude":  83.474
+                        },
+        "qos":  {
+                    "delay":  42,
+                    "timestamp":  "2026-01-01 12:02:49",
+                    "availability":  96
+                }
+    },
+    {
+        "id":  "MEDICAL20260101020",
+        "medicalData":  {
+                            "address":  "741 Health Boulevard, Tianjin",
+                            "availableBeds":  99,
+                            "latitude":  37.2166,
+                            "occupancyRate":  26.1,
+                            "department":  "Dermatology",
+                            "totalBeds":  134,
+                            "hospitalName":  "Tianjin Medical Institute",
+                            "longitude":  74.0736
+                        },
+        "qos":  {
+                    "delay":  36,
+                    "timestamp":  "2026-01-01 11:57:49",
+                    "availability":  99
+                }
+    },
+    {
+        "id":  "MEDICAL20260101021",
+        "medicalData":  {
+                            "address":  "123 Medical Street, Beijing",
+                            "availableBeds":  46,
+                            "latitude":  25.9894,
+                            "occupancyRate":  72.9,
+                            "department":  "Cardiology",
+                            "totalBeds":  170,
+                            "hospitalName":  "Beijing General Hospital",
+                            "longitude":  127.2098
+                        },
+        "qos":  {
+                    "delay":  36,
+                    "timestamp":  "2026-01-01 11:52:49",
+                    "availability":  98
+                }
+    },
+    {
+        "id":  "MEDICAL20260101022",
+        "medicalData":  {
+                            "address":  "456 Health Avenue, Shanghai",
+                            "availableBeds":  13,
+                            "latitude":  44.2195,
+                            "occupancyRate":  89.8,
+                            "department":  "Neurology",
+                            "totalBeds":  128,
+                            "hospitalName":  "Shanghai Medical Center",
+                            "longitude":  118.4046
+                        },
+        "qos":  {
+                    "delay":  33,
+                    "timestamp":  "2026-01-01 11:47:49",
+                    "availability":  95
+                }
+    },
+    {
+        "id":  "MEDICAL20260101023",
+        "medicalData":  {
+                            "address":  "789 Hospital Road, Guangzhou",
+                            "availableBeds":  -7,
+                            "latitude":  95.7877,
+                            "occupancyRate":  -5.4,
+                            "department":  "Orthopedics",
+                            "totalBeds":  -17,
+                            "hospitalName":  "Guangzhou Hospital",
+                            "longitude":  185.5918
+                        },
+        "qos":  {
+                    "delay":  24,
+                    "timestamp":  "2026-01-01 11:42:49",
+                    "availability":  95
+                }
+    },
+    {
+        "id":  "MEDICAL20260101024",
+        "medicalData":  {
+                            "address":  "321 Clinic Lane, Shenzhen",
+                            "availableBeds":  72,
+                            "latitude":  29.9142,
+                            "occupancyRate":  7.7,
+                            "department":  "Pediatrics",
+                            "totalBeds":  78,
+                            "hospitalName":  "Shenzhen Health Center",
+                            "longitude":  104.0654
+                        },
+        "qos":  {
+                    "delay":  39,
+                    "timestamp":  "2026-01-01 11:37:49",
+                    "availability":  99
+                }
+    },
+    {
+        "id":  "MEDICAL20260101025",
+        "medicalData":  {
+                            "address":  "654 Medical Center, Hangzhou",
+                            "availableBeds":  237,
+                            "latitude":  18.8265,
+                            "occupancyRate":  9.2,
+                            "department":  "Emergency",
+                            "totalBeds":  261,
+                            "hospitalName":  "Hangzhou Medical Institute",
+                            "longitude":  134.91309999999999
+                        },
+        "qos":  {
+                    "delay":  26,
+                    "timestamp":  "2026-01-01 11:32:49",
+                    "availability":  99
+                }
+    },
+    {
+        "id":  "MEDICAL20260101026",
+        "medicalData":  {
+                            "address":  "987 Hospital Drive, Chengdu",
+                            "availableBeds":  75,
+                            "latitude":  44.2156,
+                            "occupancyRate":  30.6,
+                            "department":  "Surgery",
+                            "totalBeds":  108,
+                            "hospitalName":  "Chengdu Hospital",
+                            "longitude":  85.7809
+                        },
+        "qos":  {
+                    "delay":  41,
+                    "timestamp":  "2026-01-01 11:27:49",
+                    "availability":  97
+                }
+    },
+    {
+        "id":  "MEDICAL20260101027",
+        "medicalData":  {
+                            "address":  "147 Health Plaza, Nanjing",
+                            "availableBeds":  21,
+                            "latitude":  45.9109,
+                            "occupancyRate":  76.1,
+                            "department":  "Internal Medicine",
+                            "totalBeds":  88,
+                            "hospitalName":  "Nanjing Medical Center",
+                            "longitude":  75.2286
+                        },
+        "qos":  {
+                    "delay":  38,
+                    "timestamp":  "2026-01-01 11:22:49",
+                    "availability":  98
+                }
+    },
+    {
+        "id":  "MEDICAL20260101028",
+        "medicalData":  {
+                            "address":  "258 Medical Court, Wuhan",
+                            "availableBeds":  185,
+                            "latitude":  95.9589,
+                            "occupancyRate":  129.4,
+                            "department":  "Oncology",
+                            "totalBeds":  140,
+                            "hospitalName":  "Wuhan General Hospital",
+                            "longitude":  192.7274
+                        },
+        "qos":  {
+                    "delay":  24,
+                    "timestamp":  "2026-01-01 11:17:49",
+                    "availability":  95
+                }
+    },
+    {
+        "id":  "MEDICAL20260101029",
+        "medicalData":  {
+                            "address":  "369 Hospital Way, Xi\u0027an",
+                            "availableBeds":  36,
+                            "latitude":  40.2267,
+                            "occupancyRate":  44.6,
+                            "department":  "Gynecology",
+                            "totalBeds":  65,
+                            "hospitalName":  "Xi\u0027an Health Center",
+                            "longitude":  83.3405
+                        },
+        "qos":  {
+                    "delay":  29,
+                    "timestamp":  "2026-01-01 11:12:49",
+                    "availability":  99
+                }
+    },
+    {
+        "id":  "MEDICAL20260101030",
+        "medicalData":  {
+                            "address":  "741 Health Boulevard, Tianjin",
+                            "availableBeds":  139,
+                            "latitude":  29.183,
+                            "occupancyRate":  53.4,
+                            "department":  "Dermatology",
+                            "totalBeds":  298,
+                            "hospitalName":  "Tianjin Medical Institute",
+                            "longitude":  99.721
+                        },
+        "qos":  {
+                    "delay":  38,
+                    "timestamp":  "2026-01-01 11:07:49",
+                    "availability":  95
+                }
+    }
+]

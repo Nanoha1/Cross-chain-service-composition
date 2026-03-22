@@ -1,0 +1,2 @@
+t=2026-01-20T21:38:22+0800 lvl=eror msg="not found utxo key:" module=xchain log_id=1768899490_3990918619525091 s_mod=state call=utxo.go:184 pid=27 utxoKey=TeyyPLpp9L7QAcxHangtcHTu7HUZ6iydY_c285950c75e269906e01ae56374b3e1f9d9b0fd6e270fea1b06340fa3103e1be_0
+t=2026-01-20T21:38:22+0800 lvl=eror msg="submit tx error" module=xchain log_id=1768916297_7257999788082556 s_mod=xchain call=chain.go:307 pid=27 txid=60ea5555e5cc3d061fdae64c3c01308ddb5dd7cf86cc4d94c315e61c11c4153f err="this utxo can not be found"

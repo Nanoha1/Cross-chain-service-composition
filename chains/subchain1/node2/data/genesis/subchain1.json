@@ -1,0 +1,30 @@
+{
+    "maxblocksize":  "128",
+    "gas_price":  {
+                      "mem_rate":  1000000,
+                      "xfee_rate":  1,
+                      "disk_rate":  1,
+                      "cpu_rate":  1000
+                  },
+    "award_decay":  {
+                        "height_gap":  31536000,
+                        "ratio":  1
+                    },
+    "version":  "1",
+    "genesis_consensus":  {
+                              "config":  {
+                                             "miner":  "TeyyPLpp9L7QAcxHangtcHTu7HUZ6iydY",
+                                             "period":  "3000"
+                                         },
+                              "name":  "single"
+                          },
+    "predistribution":  [
+                            {
+                                "quota":  "100000000000000000000",
+                                "address":  "TeyyPLpp9L7QAcxHangtcHTu7HUZ6iydY"
+                            }
+                        ],
+    "award":  "1000000",
+    "decimals":  "8",
+    "new_account_resource_amount":  1000
+}
