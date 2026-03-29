@@ -1,0 +1,64 @@
+Case Study
+
+To validate the effectiveness of the VCSCIoT in real-world scenarios, we consider the case of a cross-domain autonomous taxi service involving multiple independent stakeholders, including vehicles, traffic management systems, parking facilities and insurance providers, operating on different blockchain platforms. As shown in Figure 1, the VCSCIoT incorporates the following components to enable trustworthy and adaptive service composition.
+
+![Architecture of cross-chain IoT service composition scenario](./figs/overview.png)
+Figure 1: Architecture of cross-chain IoT service composition scenario
+
+Registration Blockchain (RB) acts as a registration center deployed on a cloud node. It manages global configuration, including the registering of service providers, cross-chain protocol formulation, node authentication, and cross-chain transaction processing. Service providers publish their services by submitting service descriptions to the RB.
+
+Monitoring Blockchains (MBs) are deployed on IoT devices located near the IoT services, focusing on monitoring and managing the invocation and operational status of services within the region. It records and processes local transactions while providing real-time QoS data.
+
+The instances of such components in the case study are the following ones:
+
+Vehicle services Monitoring Blockchain (VMB): The VMB manages autonomous vehicles. It handles travel requests, accesses real-time vehicle status data, and collaborates with other blockchains to complete vehicle dispatching and route optimisation. Once all service steps have passed cross-chain receipt verification, the payment smart contract is triggered to perform the final settlement.
+Parking services Monitoring Blockchain (PMB): The PMB oversees facilities such as parking lots, charging stations, and refueling points, with facilities registering with the RB for encryption certificates and keys. BNs upload service descriptions, locations, availability, and pricing, while real-time updates ensure vehicles receive the latest information.
+Insurance services Monitoring Blockchain (IMB): The IMB manages insurance providers and related services, with insurance systems registering with the RB for encryption certificates and keys. BNs upload real-time vehicle data for dynamic rate adjustments. IMB interacts with VMB, TMB, and PMB via the RB to collect data on road conditions, traffic flow, and vehicle performance for comprehensive insurance evaluation.
+
+In the cross-domain autonomous taxi scenario, the initial state of service composition is the user's submission of a travel request from location \(A\) to location \(B\), and the terminal state is reached when the trip is completed and the payment has been settled. The overall workflow is shown in Fig.~\ref{case}. The cross-chain mechanism ensures efficient coordination among vehicle management, traffic management, parking coordination, and insurance services. Service nodes must register with the RB to obtain certificates and encryption keys for secure access. Service quality is reflected based on both functional and non-functional attributes, including:
+\begin{itemize}
+\item Navigation services {\it (navigation-services.getReal-timeRoute())}, which plan the shortest or fastest route and dynamically adapt to real-time conditions like traffic and weather to enhance the travel experience.
+\item Insurance services {\it (insurance-service.adjustInsurance())}, which adjust charges based on trip data such as vehicle behaviour, tailoring costs to the specific risks of the trip.
+![Workflow of autonomous vehicles rental service](./figs/case.png)
+The VCSCIoT's handling of payments is one of its cornerstones. Trust issues of traditional multi-party settlements, the approach implements a secure and automated payment mechanism. The total cost, aggregated from vehicle usage (VMB), parking (PMB), and insurance (IMB), is locked in a smart contract upon trip initiation. This payment transaction is integrated into the cross-chain atomic commit protocol. The funds are automatically released to the respective service providers only after verifiable receipts confirming successful service delivery are recorded on all involved monitoring blockchains. This creates a trust-minimized environment where users are guaranteed to pay only for services rendered as agreed, and providers are assured of timely payment upon fulfillment of their obligations.
+
+
+  
+  
+  
+  
+  Fig.~\ref{taxi} presents a concrete instance of the case. The user requests an autonomous taxi from location \(A\) to location \(B\). To provide diverse travel options, the system offers five candidate vehicles (V1--V5) covering different service types, including standard ride, ride-sharing, and premium ride. These vehicles differ substantially in pickup time, service cost, and travel experience. The system also provides three candidate routes, denoted by S1, S2, and S3. For ride-sharing services such as V3 and V4, the system coordinates matched orders with compatible itineraries and arranges designated pickup points, P1 or P2, for additional passengers. This introduces extra detour and stopover time. The basic information is listed in Table~\ref{tab:basic}. Based on real-time QoS constraints, such as the maximum tolerable delay, together with user preferences, VCSCIoT dynamically generates an optimal composition plan across vehicle selection, route selection, and ride-sharing pickup services, thereby enabling efficient and adaptive cross-chain travel service composition. Examples of QoS-constrained service composition plans are given in Table~\ref{tab:optimal}.
+![Case study of autonomous taxi travel services](./figs/taxi.png)
+                                       
+Table 1: Basic information on vehicles and routes
+
+| Vehicle | Pickup time to A (min) | Service cost ($) | Service type | Route | Route travel time (min) | Ride-sharing pickup point | Detour time (min) |
+| :---: | :---: | :---: | :--- | :---: | :---: | :---: | :---: |
+| V1 | 2 | 28 | Standard ride | S1 | 22 | None | 0 |
+| V1 | 2 | 28 | Standard ride | S2 | 25 | None | 0 |
+| V1 | 2 | 28 | Standard ride | S3 | 30 | None | 0 |
+| V2 | 4 | 25 | Standard ride | S1 | 22 | None | 0 |
+| V2 | 4 | 25 | Standard ride | S2 | 25 | None | 0 |
+| V2 | 4 | 25 | Standard ride | S3 | 30 | None | 0 |
+| V3 | 6 | 20 | Ride-sharing | S1 | 22 | P1 | 5 |
+| V3 | 6 | 20 | Ride-sharing | S2 | 25 | P1 | 5 |
+| V3 | 6 | 20 | Ride-sharing | S3 | 30 | P1 | 6 |
+| V4 | 4 | 18 | Ride-sharing | S1 | 22 | P2 | 10 |
+| V4 | 4 | 18 | Ride-sharing | S2 | 25 | P2 | 7 |
+| V4 | 4 | 18 | Ride-sharing | S3 | 30 | P2 | 8 |
+| V5 | 3 | 52 | Premium ride | S1 | 22 | None | 0 |
+| V5 | 3 | 52 | Premium ride | S2 | 25 | None | 0 |
+| V5 | 3 | 52 | Premium ride | S3 | 30 | None | 0 |
+
+Table 2: Examples of QoS-constrained service composition plans
+| User preference | Vehicle | Route | Ride-sharing pickup point | Total time (min) | Total cost ($) | Description |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| Minimum travel time | V1 | S1 | None | 24 (2+22+0) | 28 | Shortest total time |
+| Minimum cost | V4 | S2 | P2 | 36 (4+25+7) | 18 | Lowest cost, with additional delay caused by ride-sharing |
+| Balanced QoS | V2 | S1 | None | 26 (4+22+0) | 25 | Best trade-off between cost and total travel time |
+| Low-cost alternative | V3 | S1 | P1 | 33 (6+22+5) | 20 | Ride-sharing alternative balancing efficiency and cost |
+| High service quality | V5 | S1 | None | 25 (3+22+0) | 52 | Premium vehicle configuration with direct service |
+
+
+
+
